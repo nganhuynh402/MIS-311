@@ -20,7 +20,7 @@ This dataset holds HR records for a company with three departments (HR, IT and S
 | **Departments** | HR, IT, Sales                                                 |
 | **Locations**   | Los Angeles, Chicago, New York                                |
 
-<img src="./media/image1.png" width="492">
+<img src="image1.png" width="492">
 
 ## 1.2 Column Descriptions
 
@@ -39,7 +39,7 @@ This dataset holds HR records for a company with three departments (HR, IT and S
 | **Location**          | object (nominal)            | Office location: Los Angeles, Chicago or New York.                                                |
 | **Session**           | object (nominal)            | Working shift: Morning, Evening or Night.                                                         |
 
-<img src="./media/image2.png" width="624">
+<img src="image2.png" width="624">
 
 # 2. Data Cleaning
 
@@ -49,21 +49,21 @@ Only one column has missing values: Performance Score, with 108 blanks out of 20
 
 With more than half of the scores missing, filling them in with the mean or median would mean inventing most of the ratings, and everything would get pulled towards the middle. Dropping the rows was not a good option either, since those employees still have valid age, salary and department data. So I left the missing scores as blanks and let pandas skip them whenever a performance figure is calculated. The trade-off is that every result about performance is based on a smaller group, 94 employees after cleaning.
 
-<img src="./media/image3.png" width="290"><img src="./media/image4.png" width="323">
+<img src="image3.png" width="290"><img src="image4.png" width="323">
 
 ## 2.2 Duplicate Rows
 
 There were 4 exact duplicate rows. The employees with ID 7, 8, 27 and 176 each appeared twice, with identical values in every column, which points to data entry errors rather than real records. I kept the first copy of each and removed the extra ones, so the dataset went from 203 to 199 rows.
 
-<img src="./media/image5.png" width="624">
+<img src="image5.png" width="624">
 
-<img src="./media/image6.png" width="624">
+<img src="image6.png" width="624">
 
 ## 2.3 Consistency Check
 
 I also checked whether Age and Experience make sense together. For 48 employees (24.1%), the years of experience are higher than their age minus 18, which means they would have started working before turning 18. That is a fairly large share. Some of it may be part-time or early work, so I flagged these rows but kept them. It is worth remembering when reading anything about experience later on.
 
-<img src="./media/image7.png" width="624">
+<img src="image7.png" width="624">
 
 | **Issue**                           | **Rows Affected**     | **Action**                             |
 |-------------------------------------|-----------------------|----------------------------------------|
@@ -89,18 +89,18 @@ I also checked whether Age and Experience make sense together. For 48 employees 
 
 *Table 1: Descriptive statistics for the numerical variables*
 
-<img src="./media/image8.png" width="487">
+<img src="image8.png" width="487">
 
 Employees are between 18 and 65 years old, with a mean of 39.4 and a median of 37, so the workforce leans a bit young. Salary runs from 2,025 to 9,973 and averages about 5,622. The standard deviation is large (2,280), so pay differs a lot from person to person. Experience goes from 1 to 20 years with an average of about 10. The histograms are fairly flat with a slight right skew for Age and Salary, and the boxplots show no extreme outliers.
 
-| <img src="./media/image9.png" width="624"> |
+| <img src="image9.png" width="624"> |
 |-----------------------------------------------------------------------|
 
 *Figure 1: Distribution of Age, Salary and Experience*
 
 Performance Score is rated from 1 to 5 with a mean of 2.96 and a median of 3, based on the 94 employees who have a score. The most common scores are 2 (24 employees) and 4 (22 employees), which together cover about half of the rated staff. A score of 3 is the least common (15 employees), so the ratings are spread out and there is no clear typical score in the middle.
 
-| <img src="./media/image10.png" width="624"> |
+| <img src="image10.png" width="624"> |
 |------------------------------------------------------------------------|
 
 *Figure 2: Performance Score distribution*
@@ -115,11 +115,11 @@ Performance Score is rated from 1 to 5 with a mean of 2.96 and a median of 3, ba
 
 *Table 2: Number of employees in each category*
 
-<img src="./media/image11.png" width="624">
+<img src="image11.png" width="624">
 
 Employees are spread quite evenly across the categorical variables. Each department, location and gender group holds roughly a third of the staff (63 to 72 people), and Status is almost a perfect split with 101 inactive and 98 active employees. The only slightly uneven variable is Session, where Morning has the fewest employees (57) compared with Evening (73). Since the groups are similar in size, comparing them in the next sections is fair.
 
-| <img src="./media/image12.png" width="624"> |
+| <img src="image12.png" width="624"> |
 |------------------------------------------------------------------------|
 
 *Figure 3: Employees by categorical variable*
@@ -128,7 +128,7 @@ Employees are spread quite evenly across the categorical variables. Each departm
 
 The correlations between the numerical variables are all very weak. The strongest one is between Experience and Performance Score, and it is only 0.13. Salary is almost unrelated to everything else: −0.02 with Age, 0.08 with Experience and 0.00 with Performance Score. In other words, older or more experienced employees are not paid noticeably more, and neither are the employees with higher scores.
 
-| <img src="./media/image13.png" width="624"> |
+| <img src="image13.png" width="624"> |
 |------------------------------------------------------------------------|
 
 *Figure 4: Correlation matrix of the numerical variables*
@@ -141,7 +141,7 @@ The correlations between the numerical variables are all very weak. The stronges
 
 *Table 3: Average salary, performance and experience by department*
 
-<img src="./media/image14.png" width="624">
+<img src="image14.png" width="624">
 
 | **Status**   | **Avg Salary** | **Avg Performance Score** | **Avg Experience** | **Avg Age** |
 |--------------|----------------|---------------------------|--------------------|-------------|
@@ -150,11 +150,11 @@ The correlations between the numerical variables are all very weak. The stronges
 
 *Table 4: Average values by status*
 
-<img src="./media/image15.png" width="624">
+<img src="image15.png" width="624">
 
 IT has the highest average salary (5,838) and also the highest average performance score (3.22), while HR and Sales are identical on performance (2.85). The salary gap between departments is small though, under 7% between IT and Sales. By status, inactive employees earn about 10% more on average than active ones (5,884 against 5,351) and have around a year more experience, yet their performance scores are almost the same (2.94 against 2.98).
 
-| <img src="./media/image16.png" width="624"> |
+| <img src="image16.png" width="624"> |
 |------------------------------------------------------------------------|
 
 *Figure 5: Average salary and performance by department, and salary by status*
@@ -171,11 +171,11 @@ IT has the highest average salary (5,838) and also the highest average performan
 
 *Table 5: Employees by age group*
 
-<img src="./media/image17.png" width="624">
+<img src="image17.png" width="624">
 
 The company is young. About 57% of employees are under 40 (31.2% + 26.1%), and the 18-29 group is the largest on its own. Average salary is similar across most age groups, roughly 5,650 to 5,900, except the 40-49 group which sits lower at around 4,750. The share of inactive employees also grows with age: it stays around half up to the 40-49 group, then rises to roughly 53% for 50-59 and about 62% for 60-65.
 
-| <img src="./media/image18.png" width="624"> |
+| <img src="image18.png" width="624"> |
 |------------------------------------------------------------------------|
 
 *Figure 6: Age structure of employees*
@@ -193,7 +193,7 @@ The company is young. About 57% of employees are under 40 (31.2% + 26.1%), and t
 
 Salaries are concentrated at the lower end. 63 employees (about 32%) earn between 2,000 and 4,000, and the number of employees drops with each higher band, down to 42 in the 8,000-10,000 band. Average salary is nearly the same whatever the performance score, between about 5,200 and 5,600, and employees with a score of 5 are actually among the lowest paid on average. Across departments the salary ranges overlap a lot. IT has a higher upper quartile (roughly 8,100 compared with about 7,200 for HR and Sales), but the medians are all close.
 
-| <img src="./media/image19.png" width="624"> |
+| <img src="image19.png" width="624"> |
 |------------------------------------------------------------------------|
 
 *Figure 7: Salary distribution and its link with performance and department*
@@ -202,7 +202,7 @@ Salaries are concentrated at the lower end. 63 employees (about 32%) earn betwee
 
 ## Insight 1: Pay Does Not Follow Performance, Age or Experience
 
-| <img src="./media/image20.png" width="400"><img src="./media/image21.png" width="440"> |
+| <img src="image20.png" width="400"><img src="image21.png" width="440"> |
 |------------------------------------------------------------------------------------------------------------------------------------------------------|
 
 *Figure 8: Average salary by performance score and correlation matrix*
@@ -213,7 +213,7 @@ Salary has almost no relationship with any other numerical variable. The correla
 
 ## Insight 2: A Young Workforce, but Inactive Status Is Highest in the Oldest Group
 
-| <img src="./media/image22.png" width="624"> |
+| <img src="image22.png" width="624"> |
 |------------------------------------------------------------------------|
 
 *Figure 9: Employees by age group and status by age group*
